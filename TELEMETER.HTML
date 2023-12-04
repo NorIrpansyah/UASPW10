@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transformasi Elemen Matriks</title>
+</head>
+<body>
+
+<h2>Transformasi Elemen Matriks</h2>
+
+<p>Masukkan nilai matriks (pisahkan angka dengan koma dan baris dengan titik koma):</p>
+<textarea id="matriksInput" rows="4" cols="10"></textarea>
+<br>
+<p>Masukkan nilai skalar:</p>
+<input type="number" id="skalarInput">
+<br>
+<button onclick="transformasiElemen()">Hitung Transformasi</button>
+
+<p>Hasil Transformasi:</p>
+<p id="hasilTransformasi"></p>
+
+<script>
+
+function transformasiElemen() {
+    let matriks = document.getElementById('matriksInput').value.split(";");
+    matriks = matriks.map(function(row) {
+        return row.split(",").map(Number);
+    });
+    
+    let skalar = parseFloat(document.getElementById('skalarInput').value);
+
+    let hasil = [];
+    for (let i = 0; i < matriks.length; i++) {
+        hasil[i] = [];
+        for (let j = 0; j < matriks[0].length; j++) {
+            hasil[i][j] = matriks[i][j] * skalar;
+        }
+    }
+
+    let resultHTML = "<table border='1'>";
+    for (let i = 0; i < hasil.length; i++) {
+        resultHTML += "<tr>";
+        for (let j = 0; j < hasil[0].length; j++) {
+            resultHTML += "<td>" + hasil[i][j] + "</td>";
+        }
+        resultHTML += "</tr>";
+    }
+    resultHTML += "</table>";
+
+    document.getElementById('hasilTransformasi').innerHTML = resultHTML;
+}
+
+</script>
+
+</body>
+</html>
