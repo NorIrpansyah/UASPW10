@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dot Product Vektor</title>
+</head>
+<body>
+
+<h2>Dot Product Vektor</h2>
+
+<p>Masukkan nilai vektor 1 (pisahkan angka dengan koma):</p>
+<input type="text" id="vektor1Input">
+<br>
+<p>Masukkan nilai vektor 2 (pisahkan angka dengan koma):</p>
+<input type="text" id="vektor2Input">
+<br>
+<button onclick="hitungDotProduct()">Hitung Dot Product</button>
+
+<p>Hasil Dot Product:</p>
+<p id="hasilDotProduct"></p>
+
+<script>
+
+function hitungDotProduct() {
+    let vektor1 = document.getElementById('vektor1Input').value.split(",").map(Number);
+    let vektor2 = document.getElementById('vektor2Input').value.split(",").map(Number);
+
+    if (vektor1.length !== vektor2.length) {
+        document.getElementById('hasilDotProduct').innerHTML = "Ukuran vektor tidak sama, tidak dapat melakukan dot product.";
+        return;
+    }
+
+    let dotProduct = 0;
+    for (let i = 0; i < vektor1.length; i++) {
+        dotProduct += vektor1[i] * vektor2[i];
+    }
+
+    document.getElementById('hasilDotProduct').innerHTML = "Hasil Dot Product: " + dotProduct;
+}
+
+</script>
+
+</body>
+</html>
